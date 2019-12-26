@@ -1,6 +1,6 @@
 ---
 - name: Shiva
-  hosts: all
+  hosts: localhost
 
   roles:
     - common

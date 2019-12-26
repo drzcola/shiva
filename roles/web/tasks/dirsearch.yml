@@ -1,0 +1,20 @@
+---
+- block:
+  - name: 'dirsearch : clone repository'
+    git:
+      accept_hostkey: yes
+      clone: yes
+      depth: 1
+      dest: /opt/dirsearch
+      force: yes
+      repo: https://github.com/maurosoria/dirsearch.git
+
+  - name: 'dirsearch : install launcher'
+    template:
+      dest: /usr/local/bin/dirsearch
+      mode: 0755
+      src: ../templates/dirsearch.sh 
+
+  tags:
+    - web
+    - dirsearch

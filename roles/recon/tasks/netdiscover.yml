@@ -1,0 +1,12 @@
+---
+- block:
+
+  - name: 'netdiscover : install package'
+    apt:
+      name: netdiscover
+      state: present
+      update_cache: yes
+
+  tags:
+    - recon
+    - netdiscover

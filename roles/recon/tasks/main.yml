@@ -4,6 +4,7 @@
 - include: hostile-sub-bruteforcer.yml tags=recon,hostile-sub-bruteforcer
 - include: linenum.yml tags=recon,linenum
 - include: masscan.yml tags=recon,masscan
+- include: netdiscover.yml tags=recon,netdiscover
 - include: pspy.yml tags=recon,pspy
 - include: recon-ng.yml tags=recon,recon-ng
 - include: responder.yml tags=recon,responder
