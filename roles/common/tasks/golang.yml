@@ -1,10 +1,10 @@
 ---
 - block:
-  - name: 'golang : download golang 1.12.4 archive'
+  - name: 'golang : download golang 1.13.5 archive'
     get_url:
-      url: https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz
+      url: https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
       dest: /tmp/golang.tar.gz
-      checksum: sha256:d7d1f1f88ddfe55840712dc1747f37a790cbcaa448f6c9cf51bbe10aa65442f5
+      checksum: sha256:512103d7ad296467814a6e3f635631bd35574cab3369a97a323c9a585ccaa569
 
   - name: 'golang : extract archive'
     unarchive:
