@@ -1,0 +1,40 @@
+---
+- block:
+
+  - name: 'smbmap : clone repository'
+    git:
+      accept_hostkey: yes
+      clone: yes
+      depth: 1
+      dest: /opt/smbmap
+      force: yes
+      repo: https://github.com/ShawnDEvans/smbmap.git
+
+  - name: 'smbmap : remove existing venv'
+    file:
+      path: /opt/smbmap/.venv
+      state: absent
+
+  - name: 'smbmap : create venv directory'
+    file:
+      path: /opt/smbmap/.venv
+      state: directory
+
+  - name: 'smbmap : initialise venv'
+    shell: 'bash -lc "virtualenv -p python2 /opt/smbmap/.venv"'
+
+  - name: 'smbmap : install requirements'
+    pip:
+      requirements: /opt/smbmap/requirements.txt
+      state: present
+      virtualenv: /opt/smbmap/.venv
+
+  - name: 'smbmap : install launcher'
+    template:
+      dest: /usr/local/bin/smbmap
+      mode: 0755
+      src: ../templates/smbmap.sh
+
+  tags:
+    - recon
+    - smbmap

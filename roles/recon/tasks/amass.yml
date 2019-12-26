@@ -2,9 +2,7 @@
 - block:
 
   - name: 'amass : install snap'
-    snap:
-      name: amass
-      state: present
+    shell: '/bin/bash -lc "snap install amass"'
 
   tags:
     - recon

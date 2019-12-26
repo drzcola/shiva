@@ -1,0 +1,39 @@
+---
+- block:
+  - name: 'ffuf : clone repository'
+    git:
+      accept_hostkey: yes
+      clone: yes
+      depth: 1
+      dest: /tmp/ffuf
+      force: yes
+      repo: https://github.com/ffuf/ffuf.git
+
+  - name: 'ffuf : exec go get'
+    shell: '/bin/bash -lc "/usr/local/go/bin/go get"'
+    args:
+      chdir: /tmp/ffuf
+
+  - name: 'ffuf : exec go build'
+    shell: '/bin/bash -lc "/usr/local/go/bin/go build"'
+    args:
+      chdir: /tmp/ffuf
+
+  - name: 'ffuf : install'
+    copy:
+      dest: /usr/local/bin/ffuf
+      mode: 0775
+      remote_src: yes
+      src: /tmp/ffuf/ffuf
+
+  - name: 'ffuf : cleanup build fragments'
+    file:
+      dest: '{{ item }}'
+      state: absent
+    with_items:
+      - /tmp/ffuf
+      - /root/.go/bin/ffuf
+
+  tags:
+    - web
+    - ffuf
