@@ -1,0 +1,11 @@
+---
+- block:
+
+  - name: 'amass : install snap'
+    snap:
+      name: amass
+      state: present
+
+  tags:
+    - recon
+    - amass

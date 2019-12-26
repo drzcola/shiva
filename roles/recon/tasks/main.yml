@@ -1,4 +1,5 @@
 ---
+- include: amass.yml tags=recon,amass
 - include: crackmapexec.yml tags=recon,crackmapexec
 - include: dnsrecon.yml tags=recon,dns,dnsrecon
 - include: hostile-sub-bruteforcer.yml tags=recon,hostile-sub-bruteforcer
