@@ -21,7 +21,7 @@
       create: yes
       line: 'source ~/.peda/peda.py'
       path: /root/.gdbinit
-      regex: 'source ~/.peda/peda.py'
+      regexp: 'source ~/.peda/peda.py'
 
   tags:
     - binary-analysis

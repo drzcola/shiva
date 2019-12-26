@@ -26,7 +26,7 @@
     lineinfile:
       line: 'DenyUsers ftp'
       path: /etc/ssh/sshd_config
-      regex: 'DenyUsers ftp'
+      regexp: 'DenyUsers ftp'
       state: present
 
   - name: 'vsftpd : reload sshd'
@@ -68,7 +68,7 @@
     lineinfile:
       line: '{{ item }}'
       path: /etc/vsftpd.conf
-      regex: '{{ item }}'
+      regexp: '{{ item }}'
       state: present
     with_items:
       - 'pasv_min_port=40000'
@@ -78,7 +78,7 @@
     lineinfile:
       line: '{{ item }}'
       path: /etc/vsftpd.conf
-      regex: '{{ item }}'
+      regexp: '{{ item }}'
       state: present
     with_items:
       - 'userlist_enable=YES'
@@ -94,7 +94,7 @@
     lineinfile:
       line: ftp
       path: /etc/vsftpd.userlist
-      regex: ftp
+      regexp: ftp
       state: present
 
   - name: 'vsftpd : disable service'
