@@ -1,0 +1,39 @@
+---
+- block:
+
+  - name: 'xsstrike : clone repository'
+    git:
+      accept_hostkey: yes
+      clone: yes
+      dest: /opt/xsstrike
+      force: yes
+      repo: https://github.com/s0md3v/XSStrike
+
+  - name: 'xsstrike : remove existing venv'
+    file:
+      path: /opt/xsstrike/.venv
+      state: absent
+
+  - name: 'xsstrike : create venv directory'
+    file:
+      path: /opt/xsstrike/.venv
+      state: directory
+
+  - name: 'xsstrike : initialise venv'
+    shell: 'bash -lc "virtualenv -p python3 /opt/xsstrike/.venv"'
+
+  - name: 'xsstrike : install requirements'
+    pip:
+      requirements: /opt/xsstrike/requirements.txt
+      state: present
+      virtualenv: /opt/xsstrike/.venv
+
+  - name: 'xsstrike : install launcher'
+    template:
+      dest: /usr/local/bin/xsstrike
+      mode: 0755
+      src: ../templates/xsstrike.sh
+
+  tags:
+    - exploitation
+    - xsstrike

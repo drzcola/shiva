@@ -1,5 +1,6 @@
 ---
 - include: binwalk.yml tags=binary-analysis,binwalk
+- include: libc-database.yml tags=binary-analysis,libc-database
 - include: nasm.yml tags=binary-analysis,nasm
 - include: peda.yml tags=binary-analysis,peda
 - include: pwntools.yml tags=binary-analysis,pwntools

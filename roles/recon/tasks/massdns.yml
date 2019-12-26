@@ -1,0 +1,31 @@
+---
+- block:
+
+  - name: 'massdns : clone repository'
+    git:
+      accept_hostkey:  yes
+      clone: yes
+      depth: 1
+      dest: /tmp/massdns
+      force: yes
+      repo: https://github.com/blechschmidt/massdns.git
+
+  - name: 'massdns : build'
+    command: make
+    args:
+      chdir: /tmp/massdns
+
+  - name: 'massdns : install'
+    copy:
+      src: /tmp/massdns/bin/massdns
+      dest: /usr/local/bin/massdns
+      mode: 0755
+
+  - name: 'massdns : remove build fragments'
+    file:
+      path: /tmp/massdns
+      state: absent
+
+  tags:
+    - cracking
+    - massdns

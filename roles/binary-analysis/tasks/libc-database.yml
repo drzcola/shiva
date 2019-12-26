@@ -1,0 +1,15 @@
+---
+- block:
+
+  - name: 'libc-database : clone libc-database'
+    git:
+      accept_hostkey: yes
+      clone: yes
+      depth: 1
+      dest: /opt/libc-database
+      force: yes
+      repo: https://github.com/niklasb/libc-database.git
+
+  tags:
+    - binary-analysis
+    - libc-database
